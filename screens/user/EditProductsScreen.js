@@ -16,7 +16,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import HeaderButton from '../../components/UI/HeaderButton'
 import * as productsActions from '../../store/actions/products'
 import Input from '../../components/UI/Input'
-
 import Colors from '../../constants/Colors'
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE'
@@ -72,7 +71,7 @@ const EditProductScreen = (props) => {
 
     useEffect(() => {
         if (error) {
-            Alert.alert('An error has occured!', error, [{ text: 'Okay' }])
+            Alert.alert('An error occurred!', error, [{ text: 'Okay' }])
         }
     }, [error])
 
@@ -89,7 +88,7 @@ const EditProductScreen = (props) => {
         setIsLoading(true)
         try {
             if (editedProduct) {
-                dispatch(
+                await dispatch(
                     productsActions.updateProduct(
                         prodId,
                         formState.inputValues.title,
@@ -98,7 +97,7 @@ const EditProductScreen = (props) => {
                     )
                 )
             } else {
-                dispatch(
+                await dispatch(
                     productsActions.createProduct(
                         formState.inputValues.title,
                         formState.inputValues.description,
@@ -111,6 +110,7 @@ const EditProductScreen = (props) => {
         } catch (err) {
             setError(err.message)
         }
+
         setIsLoading(false)
     }, [dispatch, prodId, formState])
 
