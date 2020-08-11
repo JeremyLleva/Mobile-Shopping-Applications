@@ -12,11 +12,14 @@ const StartupScreen = (props) => {
 
     useEffect(() => {
         const tryLogin = async () => {
+            //access key to check userdata
             const userData = await AsyncStorage.getItem('userData')
             if (!userData) {
                 props.navigation.navigate('Auth')
                 return
             }
+
+            //convert data so we can use it
             const transformedData = JSON.parse(userData)
             const { token, userId, expiryDate } = transformedData
             const expirationDate = new Date(expiryDate)
@@ -26,8 +29,11 @@ const StartupScreen = (props) => {
                 return
             }
 
+            const expirationTime =
+                expirationDate.getTime() - newDate().getTime()
+
             props.navigation.navigate('Shop')
-            dispatch(authActions.authenticate(userId, token))
+            dispatch(authActions.authenicate(userId, token, expirationTime))
         }
 
         tryLogin()
