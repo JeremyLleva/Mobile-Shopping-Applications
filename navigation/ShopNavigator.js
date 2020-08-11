@@ -11,6 +11,7 @@ import OrdersScreen from '../screens/shop/OrdersScreen'
 import UserProductsScreen from '../screens/user/UserProductsScreen'
 import EditProductsScreen from '../screens/user/EditProductsScreen'
 import AuthScreen from '../screens/user/AuthScreen'
+import StartupScreen from '../screens/StartupScreen'
 
 import Colors from '../constants/Colors'
 import { Ionicons } from '@expo/vector-icons'
@@ -108,6 +109,7 @@ const AuthNavigator = createStackNavigator(
 )
 
 const MainNavigator = createSwitchNavigator({
+    Startup: StartupScreen,
     Auth: AuthNavigator,
     Shop: ShopNavigator,
 })
