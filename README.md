@@ -12,10 +12,10 @@ A mobile shopping app created using React Native, Redux and Firebase for databas
 
 # Installation
 -npm install \
--npm start \
+-npm start 
 
 # User Stories
 -Users can create a account \
--Users can browse all items, look at their description, and add to cart
--Users can create new items or edit existing items they created
+-Users can browse all items, look at their description, and add to cart \
+-Users can create new items or edit existing items they created \
 -Users can order items from their cart and look up all orders made
